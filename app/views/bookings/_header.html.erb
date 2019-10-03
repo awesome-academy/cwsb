@@ -1,0 +1,24 @@
+<div class="content-header margin-left-0 margin-right-0">
+  <div class="header-section">
+    <h1>
+      <i class="gi gi-usd"></i><%= t "bookings.index.your_bookings" %>
+    </h1>
+  </div>
+</div>
+<div class="alert alert-success form-alert" id="form-alert-success">
+  <strong><%= t ".success" %></strong>
+  <%= link_to t(".click_here"), booking_histories_path %>
+  <%= t ".more_details" %>
+  <%= link_to t(".x"), "#", class: "close" %>
+</div>
+<div class="alert alert-danger form-alert" id="form-alert-fail">
+  <strong><%= t ".success" %></strong>
+  <%= t ".fail_create_request" %>
+  <%= link_to t(".x"), "#", class: "close" %>
+</div>
+<div class="request-all margin-left-0 margin-right-0">
+  <div class="header-section">
+    <%= button_tag t(".request_all"), class: "btn btn-danger",
+      id: "button-request-all" %>
+  </div>
+</div>

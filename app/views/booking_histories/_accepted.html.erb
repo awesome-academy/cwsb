@@ -1,0 +1,14 @@
+<% if @accepts.any? %>
+  <% @accepts.each_with_index do |order, index| %>
+    <%= hidden_field_tag "order_id",
+      order.first.id, id: "order_id-#{Settings.status.accept}-#{index}" %>
+    <%= hidden_field_tag "times",
+      @accepts.length, id: "times-#{Settings.status.accept}" %>
+    <%= hidden_field_tag "times_child", order.second.length,
+      id: "times-child-#{Settings.status.accept}-#{order.first.id}" %>
+    <%= render "content", order: order,
+      index: index, type: "#{Settings.status.accept}" %>
+  <% end %>
+<% else %>
+  <p><%= t "errors.blank", type: Settings.accept_history %></p>
+<% end %>

@@ -1,0 +1,134 @@
+<%= provide :title, t(".store_bookings") %>
+<%= javascript_include_tag "store_bookings/show.js" %>
+<div class="row full-height margin-left-0 margin-right-0 scroll-y">
+  <div class="content-header margin-left-0 margin-right-0">
+    <div class="header-section">
+      <h1>
+        <i class="gi gi-usd"></i><%= t ".store_bookings" %>
+      </h1>
+    </div>
+  </div>
+  <% @venues.each_with_index do |venue, parent_index| %>
+    <%= hidden_field_tag "total_of_venue",
+      @venues.length, id: "total-of-venue" %>
+    <%= hidden_field_tag "current_venue_id",
+      venue.id, id: "current-venue-#{parent_index}" %>
+    <%= hidden_field_tag "total_of_order_for_current_venue",
+      venue.orders.length, id: "total-of-order-#{venue.id}" %>
+    <% if venue.orders.any? %>
+      <%= render "header", venue: venue %>
+      <div class="block custom-block">
+        <div class="block-title margin-left-0 margin-right-0 padding-0-15">
+          <h2 class="venue-name"><strong><%= venue.name %></strong></h2>
+        </div>
+        <div class="block-section padding-0-15">
+          <h4 class="venue-address"><%= venue.address_details %></h4>
+          <address>
+            <i class="fa fa-phone"></i> <%= venue.phone_number %><br>
+            <i class="fa fa-envelope-o"></i>
+            <%= link_to venue.name, venue, target: "blank" %>
+          </address>
+          <div class="request-all margin-bot-70">
+            <%= button_tag t(".accept_all"),
+              class: "btn btn-danger check-all", id: "#{venue.id}" %>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive padding-0-15">
+        <table class="table table-vcenter bookings-table">
+          <tbody>
+            <% venue.orders.each_with_index do |order, index| %>
+              <%= hidden_field_tag "current_order_id", order.id,
+                id: "current-order-#{venue.id}-#{index}" %>
+              <%= hidden_field_tag "total_of_booking_for_current_order",
+                order.bookings.length, id: "total-of-booking-#{order.id}" %>
+              <% order.bookings.each_with_index do |booking, booking_index| %>
+                <%= hidden_field_tag "current_booking", booking.id,
+                  id: "current-booking-#{order.id}-#{booking_index}" %>
+                <%= hidden_field_tag "display_state",
+                  check_reject_or_accept(booking),
+                  id: "display-state-#{parent_index}-#{index}-#{booking_index}" %>
+                <%= hidden_field_tag "booking_ids", booking.id,
+                  class: "booking_ids-#{venue.id}", id: booking.state %>
+                  <tr>
+                    <td>
+                      <h4><%= link_to booking.space_name %></h4>
+                      <span class="label label-danger">
+                        <%= booking.user_name %>
+                      </span>
+                      <span class="label label-warning">
+                        <%= l booking.booking_from, format: :default %>
+                      </span>
+                      <span class="label label-primary">
+                        <i class="fa fa-clock-o"></i>
+                        <%= booking.duration %>
+                        <%= booking.booking_type_name %>
+                      </span>
+                    </td>
+                    <td class="text-center">
+                      <%= image_tag "spaces/space1.jpg", class: "image_tag" %>
+                    </td>
+                    <td class="text-center">
+                      <strong>x
+                        <span class="badge" id="quantity-<%= booking.id %>">
+                          <%= booking.quantity %>
+                        </span>
+                        <span class="label label-primary">
+                          <i class="fa fa-clock-o"></i>
+                          <%= booking.duration %>
+                          <%= booking.booking_type_name %>
+                        </span>
+                      </td>
+                      <td class="text-center">
+                        <%= image_tag "spaces/space1.jpg", class: "image_tag" %>
+                      </td>
+                      <td class="text-center">
+                        <strong>x
+                          <span class="badge" id="quantity-<%= booking.id %>">
+                            <%= booking.quantity %>
+                          </span>
+                        </strong></td>
+                      <td class="text-right">
+                        <span class="label label-success" id="price-<%= booking.id %>">$
+                          <%= select_price(booking.space, booking.booking_type_id) %>
+                        </span>
+                      </td>
+                      <td class="text-center">
+                        <%= form_tag booking_path(booking), method: :patch do |f| %>
+                          <fieldset>
+                            <div class="switch-toggle well" id= "confirm-button">
+                                <input id="rejected-<%= booking.id %>" value="<%= Booking.states.keys[3] %>" name="<%= booking.id %>" type="radio" class="state">
+                                <label for="rejected-<%= booking.id %>" id="rejected-label">
+                                  <%= Booking.states.keys[Settings.rejected] %>
+                                </label>
+                                <input id="requested-<%= booking.id %>" name="<%= booking.id %>" type="radio" class="state" value="<%= Booking.states.keys[1] %>" disabled>
+                                <label for="requested-<%= booking.id %>" id="requested-label">
+                                  <%= Booking.states.keys[Settings.requested] %>
+                                </label>
+                                <input id="accepted-<%= booking.id %>" name="<%= booking.id %>" type="radio" class="state" value="<%= Booking.states.keys[2] %>">
+                                <label for="accepted-<%= booking.id %>" id="accepted-label">
+                                  <%= Booking.states.keys[Settings.accepted] %>
+                                </label>
+                                <a class="btn btn-primary"></a>
+                            </div>
+                          </fieldset>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              <tr>
+                <td colspan="7" class="text-right">
+                  <span class="h3">
+                    <strong><%= t ".total_due" %></strong>
+                    <strong id="total-price-<%= venue.id %>"></strong>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

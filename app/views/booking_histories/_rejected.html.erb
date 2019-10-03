@@ -1,0 +1,13 @@
+<% if @rejects.any? %>
+  <% @rejects.each_with_index do |order, index| %>
+    <%= hidden_field_tag "order_id", order.first.id,
+      id: "order_id-reject-#{index}" %>
+    <%= hidden_field_tag "times", @rejects.length, id: "times-reject" %>
+    <%= hidden_field_tag "times_child", order.second.length,
+      id: "times-child-reject-#{order.first.id}" %>
+    <%= render "content", order: order, index: index,
+      type: Settings.status.rejected %>
+  <% end %>
+<% else %>
+  <p><%= t "errors.blank", type: Settings.reject_history %></p>
+<% end %>

@@ -1,0 +1,104 @@
+.space-items {
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d9d5d2;
+}
+.space-items-info {
+  height: 350px;
+  background-color: #f5f5f5;
+  border-radius: 2px;
+  border-style: dashed;
+  border-width: 1px;
+  border-color: #d9d5d2;
+}
+.space-items:hover {
+  -webkit-transform: scale(1.05,1.05);
+  -moz-transform: scale(1.05,1.05);
+  -o-transform: scale(1.05,1.05);
+  -ms-transform: scale(1.05,1.05);
+  transform: scale(1.05,1.05);
+}
+.hgth-150{
+  height: 100%;
+  width: 100%;
+}
+.widget-extra-custom {
+  padding: 0px !important;
+}
+.custom-dropdown {
+  position: static !important;
+}
+.col-md-12 legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+.col-md-12 .number {
+  background: #1abc9c;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+  border-radius: 15px 15px 15px 0px;
+}
+.col-md-12 .btn-submit {
+  position: relative;
+  display: block;
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  margin: 0 auto;
+  background: #1abc9c;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  width: 100%;
+  border: 1px solid #16a085;
+  border-width: 1px 1px 3px;
+  margin-bottom: 10px;
+}
+.col-md-12 .btn-submit:hover {
+  background: #109177;
+}
+.space-form {
+  max-width: 100%;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  padding: 20px;
+  background: #f4f7f8;
+  border-radius: 8px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.space-content-form {
+  margin-top: 40px;
+}
+.custom-image {
+  width: 100% !important;
+  height: 190px !important;
+}
+.full-width {
+  width: 100%;
+}
+.height-350px {
+  max-height: 350px;
+}
+.header-section h1 {
+  font-family: oswald !important;
+  color: #00464f !important;
+  font-weight: bold !important;
+}
+.header-section small {
+  font-family: oswald !important;
+  color: #00464f !important;
+}
+.inline-block {
+  display: inline-block;
+}
+.space-address {
+  font-family: oswald !important;
+  color: #00464f !important;
+}

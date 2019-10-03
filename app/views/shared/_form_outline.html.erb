@@ -1,0 +1,41 @@
+<%= hidden_field_tag "free", active_id, id: "active-item" %>
+<form id="clickable-wizard" class="margin-left-0 margin-right-0 form-horizontal form-bordered">
+  <div id="clickable-first" class="step">
+    <div class="form-group">
+      <div class="col-xs-12">
+        <ul class="nav nav-pills nav-justified clickable-steps" >
+          <li id="venues">
+            <%= link_to edit_venue_path(@venue) do %>
+              <strong><%= t "clickable_venue" %></strong>
+            <% end %>
+          </li>
+          <li id="details">
+            <%= link_to edit_venue_venue_detail_path(@venue) do %>
+              <strong><%= t "clickable_details" %></strong>
+            <% end %>
+          </li>
+          <li id="spaces">
+            <%= link_to venue_spaces_path(@venue) do %>
+              <strong><%= t "clickable_space_pricing" %></strong>
+            <% end %>
+          </li>
+          <li id="admins">
+            <%= link_to "#" do %>
+              <strong><%= t "clickable_admins" %></strong>
+            <% end %>
+          </li>
+          <li id="amenities">
+            <%= link_to venue_amenities_path(@venue) do %>
+              <strong><%= t "clickable_amenities" %></strong>
+            <% end %>
+          </li>
+          <li id="marketplace">
+            <%= link_to "#" do %>
+              <strong><%= t "clickable_marketplaces" %></strong>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</form>

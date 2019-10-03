@@ -1,0 +1,13 @@
+<% if @requests.any? %>
+  <% @requests.each_with_index do |order, index| %>
+    <%= hidden_field_tag "order_id",
+      order.first.id, id: "order_id-#{Settings.status.request}-#{index}" %>
+    <%= hidden_field_tag "times",
+      @requests.length, id: "times-#{Settings.status.request}" %>
+    <%= hidden_field_tag "times_child", order.second.length,
+      id: "times-child-#{Settings.status.request}-#{order.first.id}" %>
+    <%= render "content", order: order, index: index, type: Settings.status.request %>
+  <% end %>
+<% else %>
+  <p><%= t "errors.blank", type: Settings.request_history %></p>
+<% end %>

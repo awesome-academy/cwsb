@@ -1,0 +1,42 @@
+<div class="col-md-6" id="space_type" data-status="<%= space.space_type %>">
+  <div class="widget">
+    <div class="widget-simple">
+      <h4 class="widget-content">
+        <%= link_to search_space_path(space), target: :_blank do %>
+          <strong><%= space.space_type.humanize %></strong>
+        <% end %>
+        <small>
+          <%= t "in" %>
+          <%= link_to space.venue.name, "javascript:" %>
+        </small>
+      </h4>
+    </div>
+    <div class="widget-extra-full themed-background-dark">
+      <div id="widget-carousel-<%= space.id %>"
+        class="carousel slide remove-margin">
+        <% if space.images.any? %>
+          <div class="carousel-inner">
+            <% space.images.each do |image| %>
+              <div class="item <%= first_active space.images, image %>">
+                <%= image_tag image.picture.url, alt: image.title,
+                  class: "img-responsive custom-image" %>
+              </div>
+            <% end %>
+          </div>
+          <% if space.images.size > Settings.min_quantity %>
+            <a class="left carousel-control"
+              href="#widget-carousel-<%= space.id %>"  data-slide="prev">
+                <span><i class="fa fa-chevron-left"></i></span>
+            </a>
+            <a class="right carousel-control"
+              href="#widget-carousel-<%= space.id %>" data-slide="next">
+                <span><i class="fa fa-chevron-right"></i></span>
+            </a>
+          <% end %>
+        <% else %>
+          <%= image_tag "not_available", class: "img-responsive  custom-image" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

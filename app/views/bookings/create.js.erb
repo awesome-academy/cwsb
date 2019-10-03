@@ -1,0 +1,7 @@
+<% if @booking.errors.any? %>
+  $('#create-booking-block').html('<%= j render layout: false,
+    partial: "bookings/new", locals: {booking: @booking} %>')
+<% else %>
+  <% flash[:success] = t ".success" %>
+  window.location = "<%= bookings_path %>"
+<% end %>

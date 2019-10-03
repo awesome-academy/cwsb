@@ -1,0 +1,9 @@
+<% if order.paid? %>
+  <%= button_to t("booking_histories.index.paid"),
+    payments_path(order: order.id),
+    class: "btn btn-success", disabled: true %>
+<% else %>
+  <%= button_to t("booking_histories.index.payment"),
+    payments_path(order: order.id),
+    class: "btn btn-danger" %>
+<% end %>

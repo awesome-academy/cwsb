@@ -1,0 +1,58 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiNNIpP8sLtpWlcwLuv_ZqA1NQnbtm_Dk&libraries=places"></script>
+<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+<script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script>
+<%= javascript_include_tag "search/search.js" %>
+<div class="row full-height margin-left-0 margin-right-0">
+  <div class="col-md-6 max-height-x padding-left-0 padding-right-0">
+    <div id="map-container full-height">
+      <div id="map"></div>
+    </div>
+  </div>
+  <div class="col-md-6 max-height-x padding-left-0 padding-right-0 scroll-y">
+    <div class="block-full">
+      <div class="widget">
+        <%= form_tag search_spaces_path, method: :get, remote: true,
+          id: "search-space-form" do %>
+          <%= text_field_tag :search, params[:search],
+            placeholder: t("search.place_holder"), class: "controls",
+            id: "pac-input" %>
+        <% end %>
+      </div>
+      <div class = "widget margin-bottom-x" id = "fixed-top-last">
+        <div class="col-md-12">
+          <label id = "label-space"><%= t ".space_type"%><span class="box"></span></label>
+          <div class="col-md-6 col-lg-3">
+            <%= link_to "javascript:;", class: "btn btn-md btn-filter green", id: "desk",
+              data: {target: "desk"} do %>
+              <%= t ".desk" %><span class="box"></span>
+            <% end %>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <%= link_to "javascript:;", class: "btn btn-md btn-filter green", id: "office",
+              data: {target: "prive_office"}  do %>
+              <%= t ".private_office" %><span class="box"></span>
+            <% end %>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <%= link_to "javascript:;", class: "btn btn-md btn-filter green", id: "meeting",
+              data: {target: "meeting_room"}  do %>
+              <%= t ".meeting_room" %><span class="box"></span>
+            <% end %>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <%= link_to "javascript:;", class: "btn btn-md btn-filter green", id: "all",
+              data: {target: "all"}  do %>
+              <%= t ".all" %><span class="box"></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= hidden_field_tag "markers-on-map", @hash.to_json %>
+      <%= hidden_field_tag "current_lat", Settings.default_latitude %>
+      <%= hidden_field_tag "current_lng", Settings.default_latitude %>
+      <div class="row margin-left-0 margin-right-0 max-height-x" id="search-space-result" >
+        <%= render "search_result" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="row full-height margin-left-0 margin-right-0 scroll-y">
+  <div class="col-md-12">
+    <div class="block full">
+      <%= @venue.name %>
+    </div>
+    <div class="block full">
+      <div class="block-title">
+        <%= render "shared/form_outline", active_id: "details" %>
+      </div>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="tab-content">
+            <%= simple_form_for [@venue, @venue_details], method: :patch do |f| %>
+              <%= f.simple_fields_for :images do |form_image| %>
+                <% unless @venue.images.first.picture_url.blank? %>
+                  <%= image_tag @venue.images.first.picture_url,
+                    class: "wth-80" %>
+                <% end %>
+                <%= form_image.input :picture,
+                  input_html: {class: "margin-bot-15"} %>
+              <% end %>
+              <%= f.input :number_of_floors,
+                input_html: {class: "form-control margin-bot-15"} %>
+              <%= f.input :floor_space,
+                input_html: {class: "form-control margin-bot-15"} %>
+              <%= f.input :number_of_rooms,
+                input_html: {class: "form-control margin-bot-15"} %>
+              <%= f.input :number_of_desks,
+                input_html: {class: "form-control margin-bot-15"} %>
+              <%= hidden_field_tag :detail, :active %><br>
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  <b><%= t "working_times" %></b>
+                  <div class="checkbox-group pull-right">
+                    <input ng-model="scheduleControl.different" name="different" id="different" class="ng-valid ng-dirty" type="checkbox">
+                    <label for="different" class="checkbox-label"><%= t "check_all" %></label>
+                  </div>
+                </div>
+                <div class="panel-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <%= render "working_time", f: f %>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <%= f.button :submit, class: "btn btn-primary pull-right" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

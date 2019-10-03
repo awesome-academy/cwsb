@@ -1,0 +1,65 @@
+<div class="row full-height margin-left-0 margin-right-0 scroll-y">
+  <div class="col-sm-12 padding-left-0 padding-right-0">
+    <div class="block full">
+      <%= @venue.name %>
+    </div>
+  </div>
+  <div class="block full full-height">
+    <div class="block-title">
+      <%= render "shared/form_outline", active_id: "spaces" %>
+    </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="tab-content">
+          <div class="widget col-lg-3">
+            <div class="widget-extra-full space-items-info">
+              <div class="col-xs-12 text-center gutter">
+                <%= link_to new_venue_space_path(@venue), class: "btn btn-info" do %>
+                  <i class="fa fa-plus-square"></i>
+                  <%= t "add_space" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <% @spaces.each do |space| %>
+            <div class="col-sm-12 col-lg-3">
+              <div class="widget space-items">
+                <div class="widget-extra-full venue-items widget-extra-custom">
+                  <div class="widget-options">
+                    <i class="fa fa-cog setting_icon" aria-hidden="true" data-toggle="dropdown"></i>
+                      <ul class="dropdown-menu custom-dropdown" role="menu">
+                        <li>
+                          <%= link_to edit_venue_space_path(space.venue, space) do %>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            &nbsp;<%= t ".edit" %>
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to venue_space_path(space.venue, space),
+                            class: "delete_space", method: :delete, remote: true,
+                            data: {confirm: t(".confirm_delete")} do %>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                            &nbsp;<%= t ".delete" %>
+                          <% end %>
+                        </li>
+                      </ul>
+                  </div>
+                  <% if space.images.any? %>
+                    <%= image_tag space.images.first.picture_url, class: "hgth-150" %>
+                  <% end %>
+                </div>
+                <div class="widget-extra themed-background text-center venue-info">
+                  <h3 class="widget-content-light">
+                    <strong><%= link_to space.space_type, edit_venue_space_path(space.venue, space) %></strong><br>
+                    <small><%= t ".capicity" %><%= space.capicity %></small>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

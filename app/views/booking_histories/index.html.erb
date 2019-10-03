@@ -1,0 +1,34 @@
+<% provide :title, t(".booking_histories") %>
+<%= javascript_include_tag "booking_history/index.js" %>
+<%= javascript_include_tag "booking_history/delete_booking.js" %>
+<div class="row full-height margin-left-0 margin-right-0 scroll-y">
+  <div class="content-header margin-left-0 margin-right-0">
+    <div class="header-section">
+      <h1>
+        <i class="gi gi-usd"></i><%= t ".booking_histories" %>
+      </h1>
+    </div>
+  </div>
+  <div class="block custom-block">
+    <div class="block-title margin-left-0 margin-right-0 padding-0-15">
+      <ul class="nav nav-tabs height-45" data-toggle="tabs">
+        <li class="active">
+          <%= link_to t(".request"), "#forum-categories" %>
+        </li>
+        <li><%= link_to t(".accept"), "#forum-topics" %></li>
+        <li><%= link_to t(".reject"), "#forum-discussion" %></li>
+      </ul>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane active" id="forum-categories">
+        <%= render "requested", requests: @requests %>
+      </div>
+      <div class="tab-pane" id="forum-topics">
+        <%= render "accepted", accepts: @accepts %>
+      </div>
+      <div class="tab-pane" id="forum-discussion">
+        <%= render "rejected", rejects: @rejects %>
+      </div>
+    </div>
+  </div>
+</div>

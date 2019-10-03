@@ -1,0 +1,51 @@
+<div class="block custom-block" id= "form-border-<%= order.first.id %>">
+  <div class="block-title margin-left-0 margin-right-0 padding-0-15">
+    <h2 class="venue-name">
+      <strong><%= order.first.venue.name %></strong>
+    </h2>
+  </div>
+  <div class="block-section padding-0-15">
+    <h4 class="venue-address"><%= order.first.venue.address_details %></h4>
+    <address>
+      <i class="fa fa-phone"></i> <%= order.first.venue.phone_number %><br>
+      <i class="fa fa-envelope-o"></i>
+      <%= link_to order.first.venue.email, "javascript:;" %>
+    </address>
+  </div>
+  <div class="table-responsive padding-0-15">
+    <table class="table table-vcenter bookings-table">
+      <tbody>
+        <% order.second.each_with_index do |booking, index2| %>
+          <%= hidden_field_tag "booking_id", booking.id,
+            id: "booking-#{type}-#{index}-#{index2}" %>
+          <%= render "layouts/content_of_booking",
+            booking: booking, type: "history" %>
+        <% end %>
+        <tr class="active">
+          <td colspan="5" class="text-right">
+            <span class="h3">
+              <strong><%= t ".total_due" %></strong>
+            </span>
+          </td>
+          <td class="text-right">
+            <span class="h3">
+              <strong id="total-price-<%= type %>-<%= order.first.id %>"></strong>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="clearfix padding-0-15">
+    <div class="btn-group pull-right">
+      <%= hidden_field_tag "total_paid", {}, id: "total-price-form" %>
+      <%= hidden_field_tag "booking_ids", order.second, id: "booking_ids" %>
+      <% if type == "accept" %>
+        <%= render "payment", order: order.first %>
+      <% elsif type == "pending" %>
+        <%= button_tag t(".waitting"),
+        class: "btn btn-warning button-request", disabled: true %>
+      <% end %>
+    </div>
+  </div>
+</div>
