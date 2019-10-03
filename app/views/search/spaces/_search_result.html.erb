@@ -1,0 +1,9 @@
+<% if @addresses.any? %>
+  <% @addresses.each do |address| %>
+    <%= render address.spaces %>
+  <% end %>
+<% else %>
+  <div class="col-sm-8 col-sm-offset-2 text-center">
+    <h3><%= t "errors.spaces.no_result" %></h3>
+  </div>
+<% end %>

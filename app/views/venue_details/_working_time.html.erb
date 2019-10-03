@@ -1,0 +1,27 @@
+<%= f.simple_fields_for :working_times do |form_working_times| %>
+  <div class="row checkbox_times">
+    <tr>
+      <td>
+        <%= form_working_times.input :day_in_week,
+          input_html: {class: "form-control", id: "day_in_week", disabled: true} %>
+      </td>
+      <td>
+        <%= form_working_times.input :working_to, as: :time,
+          input_html: {class: "form-control", id: "working_to"} %>
+      </td>
+      <td>
+        <%= form_working_times.input :working_from, as: :time,
+          input_html: {class: "form-control", id: "working_from"} %>
+      </td>
+      <td>
+        <%= form_working_times.input :status, as: :boolean,
+          checked_value: "open", unchecked_value: "close", label: false,
+          input_html: {id: "label_#{form_working_times.object.id }",
+          class: "check_working"} %>
+      </td>
+      <td>
+        <%= label_status form_working_times.object.model %>
+      </td>
+    </tr>
+  </div>
+<% end %>

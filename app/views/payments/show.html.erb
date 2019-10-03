@@ -1,0 +1,72 @@
+<%= provide :title, t(".title") %>
+<div class="row full-height margin-left-0 margin-right-0 background-x scroll-y">
+  <div class="block full-height margin-bottom-0">
+    <div class="block-title">
+      <h2 class="amenity-name"><strong><%= t ".block_title" %></strong></h2>
+    </div>
+    <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+      <div class="row">
+        <div class="col-xs-7 col-sm-7 col-md-7 text-right">
+          <p>
+            <em>
+              <%= t ".purchased_at" %> :
+              <%= l @payment.purchased_at, format: :default %>
+            </em>
+          </p>
+          <p>
+            <em>
+              <%= t ".transaction_id" %> :
+              <%= @payment.transaction_id %>
+            </em>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="text-center">
+          <h1><%= t ".title" %></h1>
+        </div>
+        </span>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th><%= t ".space" %></th>
+              <th><%= t ".quantity" %></th>
+              <th class="text-center"><%= t ".price" %></th>
+              <th class="text-center"><%= t ".total" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @payment.order.bookings.each do |booking| %>
+              <tr>
+                <td class="col-md-9">
+                  <em><%= booking.space_name %></em>
+                </td>
+                <td class="col-md-1" style="text-align: center">
+                  <%= booking.quantity %>
+                </td>
+                <td class="col-md-1 text-center">
+                  <%= select_price(booking.space, booking.booking_type_id) %>
+                </td>
+                <td class="col-md-1 text-center">
+                  <%= booking.total_price %>
+                </td>
+              </tr>
+            <% end %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td class="text-right">
+                <h4><strong><%= t ".total" %> : </strong></h4>
+              </td>
+              <td class="text-center text-danger">
+                <h4><strong>$ <%= @payment.price %></strong></h4>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <%= button_to t(".back"), booking_histories_path, method: :get,
+          class: "btn btn-success btn-lg btn-block" %>
+      </div>
+    </div>
+  </div>
+</div>

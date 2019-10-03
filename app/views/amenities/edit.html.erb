@@ -1,0 +1,83 @@
+<%= javascript_include_tag "amenity/edit.js" %>
+<div class="row full-height margin-left-0 margin-right-0 background-x scroll-y">
+  <div class="block full-height margin-bottom-0">
+    <div class="block-title">
+      <h2 class="amenity-name">
+        <strong><%= t "amenities.new.block_title" %></strong>
+      </h2>
+    </div>
+    <%= render "shared/form_outline", active_id: "amenities" %>
+    <div class="block">
+      <div class="block-title text-center">
+        <h1 class="amenity-name">
+          <strong><%= t "amenities.new.title" %></strong>
+        </h1>
+      </div>
+      <%= form_for [@venue, @amenity],
+        html: {class: "form-horizontal form-bordered",
+        enctype: "multipart/form-data"} do |f| %>
+        <div class="form-group">
+          <%= f.label t("amenities.new.service"),
+            class: "col-md-3 control-label" %>
+          <div class="col-md-6">
+            <%= f.text_field :name, class: "form-control",
+              placeholder: t("amenities.new.place_wifi") %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label t("amenities.new.description"),
+            class: "col-md-3 control-label" %>
+          <div class="col-md-6">
+            <%= f.text_area :description, class: "form-control",
+              placeholder: t("amenities.new.place_wifi") %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-6">
+            <div class="checkbox">
+              <label for="example-checkbox3">
+                <%= f.check_box :is_free, {id: "cb-is-free", checked: true } %>
+                <%= t "amenities.new.is_free" %>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div id="hidden-form">
+          <%= f.fields_for :service_charge do |service_field| %>
+            <div class="form-group">
+              <%= service_field.label t(".price"),
+                class: "col-md-3 control-label" %>
+              <div class="col-md-6">
+                <%= service_field.text_field :price, class: "form-control",
+                  id: "price", placeholder: t(".price_plholder") %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= service_field.label t(".per"),
+                class: "col-md-3 control-label" %>
+              <div class="col-md-6">
+                <%= service_field.text_field :quantity,
+                  class: "col-md-3 form-control",
+                  placeholder: t(".quantity_plholder"), id: "quantity" %>
+                <div class="input-group-btn" id="dropdown">
+                  <%= service_field.collection_select :price_type_id,
+                    PriceType.all, :id, :content, {},
+                    {class: "btn btn-primary dropdown-toggle"} %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="form-group form-actions">
+          <div class="col-md-9 col-md-offset-3">
+            <%= link_to t("amenities.new.cancel"), venue_amenities_path,
+              class: "btn btn-sm btn-primary" %>
+            <%= f.submit t("amenities.new.submit"),
+              class: "btn btn-sm btn-warning" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

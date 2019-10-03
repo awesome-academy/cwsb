@@ -1,0 +1,25 @@
+<%= javascript_include_tag "map" %>
+<div class="row full-height margin-left-0 margin-right-0">
+  <div class="col-md-6 max-height-x padding-left-0 padding-right-0">
+    <div class="map-info full-height">
+      <div id="gmap_canvas" class="map-show full-height"></div>
+    </div>
+  </div>
+  <div class="col-md-6 max-height-x padding-left-0 padding-right-0">
+    <div class="col-md-12">
+        <p class="lead"><%= t "new_venue" %></p>
+    </div>
+    <div class="col-md-12">
+      <%= simple_form_for @venue do |f| %>
+        <%= f.input :name, input_html: {class: "form-control margin-bot-15"} %>
+        <%= f.input :description, input_html: {class: "form-control margin-bot-15"} %>
+        <%= f.simple_fields_for :address do |form_address| %>
+          <%= form_address.input :details,
+            input_html: {class: "form-control margin-bot-15", id: "address"} %>
+        <% end %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhyJ3SWFP8U5Xmqe3H3X_iOsR1nw1v6_Q&&libraries=places"></script>

@@ -1,0 +1,8 @@
+<p> <%= "#{t("users.mailer.unlock.welcome")} @resource.email" %>!</p>
+
+<p><%= t "users.mailer.unlock.remind1" %></p>
+
+<p><%= t "users.mailer.unlock.remind2" %></p>
+
+<p><%= link_to t("users.mailer.unlock.my_account"),
+  unlock_url(@resource, unlock_token: @token) %></p>

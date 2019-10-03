@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= full_title %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "application", media: "all",
+      "data-turbolinks-track": true %>
+    <%= javascript_include_tag "application",
+      "data-turbolinks-track": true %>
+    <%= javascript_include_tag "static_pages.js" %>
+    <%= render "layouts/shared/shim" %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiNNIpP8sLtpWlcwLuv_ZqA1NQnbtm_Dk&libraries=places"></script>
+  </head>
+  <body>
+    <header id="navigation" class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-collapse">
+            <span class="sr-only"><%= t ".toggle_navigation" %></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#body">
+            <h1 id="logo"><%= t "layout.site_name" %></h1>
+          </a>
+        </div>
+        <nav class="collapse navbar-collapse navbar-right" role="Navigation">
+          <ul id="nav" class="nav navbar-nav">
+            <% if user_signed_in? %>
+              <li class="current">
+                <%= link_to "#" do %>
+                  <%= t "home.hello" %><%= current_user.name %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to t("layout.logout"), destroy_user_session_path,
+                  method: :delete %>
+              </li>
+            <% else %>
+              <li class="current">
+                <%= link_to t("layout.login"), new_user_session_url %>
+              </li>
+              <li>
+                <%= link_to t("layout.signup"), new_user_registration_url %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section id="search_section" class="bg-one">
+      <div class="container">
+        <div class="row">
+          <div class="title text-center wow fadeIn" data-wow-duration="1500ms" >
+            <h2>
+              <%= t ".type" %> <span class="color"><%= t ".somewhere" %></span>
+            </h2>
+            <div class="border"></div>
+          </div>
+          <%= form_tag search_spaces_path, method: :get, id: "search-space-form" do %>
+            <div id="custom-search-input">
+              <div class="input-group col-md-8 margin-auto">
+                <%= text_field_tag :search, params[:search],
+                  placeholder: t("home.search"),
+                  class: "form-control search-query", id: "pac-input" %>
+                <span class="input-group-btn">
+                  <button class="btn btn-danger" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                  </button>
+                </span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
+    <div id="home-carousel" class="carousel slide" data-interval="false">
+      <ol class="carousel-indicators">
+        <li data-target="#home-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#home-carousel" data-slide-to="1"></li>
+        <li data-target="#home-carousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <div class="carousel-caption">
+            <div class="animated bounceInRight">
+              <h2><%= t ".carousel1" %></h2>
+              <p><%= t ".carousel_line" %></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="carousel-caption">
+            <div class="animated bounceInDown">
+              <h2><%= t ".carousel2" %></h2>
+              <p><%= t ".carousel_line" %></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="carousel-caption">
+            <div class="animated bounceInUp">
+              <h2><%= t ".carousel3" %></h2>
+              <p><%= t ".carousel_line" %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav id="nav-arrows" class="nav-arrows hidden-xs
+        hidden-sm visible-md visible-lg">
+        <%= link_to "#home-carousel", data: {slide: "prev"},
+          class: "sl-prev hidden-xs" do %>
+          <i class="fa fa-angle-left fa-3x"></i>
+        <% end %>
+        <%= link_to "#home-carousel", data: {slide: "next"},
+          class: "sl-next hidden-xs" do %>
+          <i class="fa fa-angle-right fa-3x"></i>
+        <% end %>
+      </nav>
+    </div>
+    <section id="testimonial" class="parallax-section">
+      <div class="container">
+        <div class="sub-title text-center wow fadeInDown" data-wow-duration="500ms">
+          <h3><%= t ".our_team" %></h3>
+        </div>
+        <div id="testimonials-carousel" class="carousel slide carousel-html" data-ride="carousel" data-interval="4000">
+          <ol class="carousel-indicators carousel-indicators-custom">
+            <li data-target="#testimonials-carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#testimonials-carousel" data-slide-to="1"></li>
+            <li data-target="#testimonials-carousel" data-slide-to="2"></li>
+            <li data-target="#testimonials-carousel" data-slide-to="3"></li>
+            <li data-target="#testimonials-carousel" data-slide-to="4"></li>
+            <li data-target="#testimonials-carousel" data-slide-to="5"></li>
+            <li data-target="#testimonials-carousel" data-slide-to="6"></li>
+            <li data-target="#testimonials-carousel" data-slide-to="7"></li>
+          </ol>
+          <div class="carousel-inner text-center">
+            <div class="item text-center active">
+              <div class="client-thumb">
+                <%= image_tag "placeholders/avatars/anhtrung.jpg",
+                  class: "img-responsive" %>
+              </div>
+              <div class="client-info">
+                <div class="client-meta">
+                  <h3><%= t ".name1" %></h3>
+                </div>
+                <div class="client-comment">
+                  <p><%= t ".quote1" %></p>
+                </div>
+              </div>
+            </div>
+            <div class="item text-center">
+              <div class="client-thumb">
+                <%= image_tag "placeholders/avatars/anhdieu.jpg",
+                  class: "img-responsive" %>
+              </div>
+              <div class="client-info">
+                <div class="client-meta">
+                  <h3><%= t ".name2" %></h3>
+                </div>
+                <div class="client-comment">
+                  <p><%= t ".quote2" %></p>
+                </div>
+              </div>
+            </div>
+            <div class="item text-center">
+              <div class="client-thumb">
+                <%= image_tag "placeholders/avatars/anhtrananh.jpg",
+                  class: "img-responsive" %>
+              </div>
+              <div class="client-info">
+                <div class="client-meta">
+                  <h3><%= t ".name3" %></h3>
+                </div>
+                <div class="client-comment">
+                  <p><%= t ".quote3" %></p>
+                </div>
+              </div>
+            </div>
+            <div class="item text-center">
+              <div class="client-thumb">
+                <%= image_tag "placeholders/avatars/chien.jpg",
+                  class: "img-responsive" %>
+              </div>
+              <div class="client-info">
+                <div class="client-meta">
+                  <h3><%= t ".name4" %></h3>
+                </div>
+                <div class="client-comment">
+                  <p><%= t ".quote4" %></p>
+                </div>
+              </div>
+            </div>
+            <div class="item text-center">
+              <div class="client-thumb">
+                <%= image_tag "placeholders/avatars/dung.jpg",
+                  class: "img-responsive" %>
+              </div>
+              <div class="client-info">
+                <div class="client-meta">
+                  <h3><%= t ".name5" %></h3>
+                </div>
+                <div class="client-comment">
+                  <p><%= t ".quote5" %></p>
+                </div>
+              </div>
+            </div>
+            <div class="item text-center">
+              <div class="client-thumb">
+                <%= image_tag "placeholders/avatars/doanh.jpg",
+                  class: "img-responsive" %>
+              </div>
+              <div class="client-info">
+                <div class="client-meta">
+                  <h3><%= t ".name6" %></h3>
+                </div>
+                <div class="client-comment">
+                  <p><%= t ".quote6" %></p>
+                </div>
+              </div>
+            </div>
+            <div class="item text-center">
+              <div class="client-thumb">
+                <%= image_tag "placeholders/avatars/giang.jpg",
+                  class: "img-responsive" %>
+              </div>
+              <div class="client-info">
+                <div class="client-meta">
+                  <h3><%= t ".name7" %></h3>
+                </div>
+                <div class="client-comment">
+                  <p><%= t ".quote6" %></p>
+                </div>
+              </div>
+            </div>
+            <div class="item text-center">
+              <div class="client-thumb">
+                <%= image_tag "placeholders/avatars/doan.jpg",
+                  class: "img-responsive" %>
+              </div>
+              <div class="client-info">
+                <div class="client-meta">
+                  <h3><%= t ".name8" %></h3>
+                </div>
+                <div class="client-comment">
+                  <p><%= t ".quote6" %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer" id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 col-xs-12">
+              <h3><%= t "home.about_us" %></h3>
+              <ul>
+                <li><a href="#"><%= t "home.company" %></a></li>
+                <li><a href="#"><%= t "home.contact" %></a></li>
+                <li><a href="#"><%= t "home.support" %></a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+              <h3><%= t "home.legal" %></h3>
+              <ul>
+                <li><a href="#"><%= t "home.licensing" %></a></li>
+                <li><a href="#"><%= t "home.privacy_policy" %></a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 col-xs-12 ">
+              <h3><%= t "home.follow_us" %></h3>
+              <ul class="social">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="pull-left"><%= t "home.link_footer" %></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

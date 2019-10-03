@@ -1,0 +1,53 @@
+<tr>
+  <td>
+    <h4><%= link_to booking.space_name %></h4>
+    <span class="label label-info">
+      <%= l booking.booking_from, format: :default %>
+    </span>
+    <span class="label label-info">
+      <i class="fa fa-clock-o"></i>
+      <%= booking.duration %>
+      <%= booking.booking_type_name %>
+    </span>
+    <% if type == "history" %>
+      <% unless booking.order.paid? %>
+        <%= link_to "#", class: "btn btn-xs btn-danger delete-booking",
+          id: "delete-#{booking.id}" do %>
+          <i class="fa fa-times"></i>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to "#", class: "btn btn-xs btn-danger delete-booking",
+        id: "delete-#{booking.id}" do %>
+        <i class="fa fa-times"></i>
+      <% end %>
+    <% end %>
+  </td>
+  <td class="text-center">
+    <%= image_tag "spaces/space1.jpg", class: "image_tag" %>
+  </td>
+  <td class="text-center">
+    <span class="label label-<%= display_state booking %>">
+      <%= booking.state %>
+    </span>
+  </td>
+  <td class="text-right">
+    <span class="label label-primary" id="price-<%= booking.id %>">$
+      <%= select_price(booking.space, booking.booking_type_id) %>
+    </span>
+  </td>
+  <td class="text-center">
+    <strong>x
+      <span class="badge" id="quantity-<%= booking.id %>">
+        <%= booking.quantity %>
+      </span>
+    </strong>
+  </td>
+  <td class="text-center">
+    <strong>
+      <span class="badge" id="price-<%= booking.id %>">$
+        <%= booking.total_price %>
+      </span>
+    </strong>
+  </td>
+</tr>

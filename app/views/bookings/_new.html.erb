@@ -1,0 +1,63 @@
+<div class="media-body footer-section line-break-block">
+  <p class="push-bit">
+    <strong><%= t ".booking" %></strong>
+  </p>
+  <div class="row">
+    <%= render "shared/error_messages", object: booking %>
+  </div>
+  <%= simple_form_for booking, remote: true do |f| %>
+    <%= f.hidden_field :space_id, value: booking.space.id %>
+    <div class="responsive-table">
+      <table class="table" cellspacing="0">
+        <tbody>
+          <tr>
+            <th><%= t ".date" %></th>
+            <th colspan="2"><%= t ".duration" %></th>
+            <th>
+              <strong>
+                <% if booking.space.coworking_space? %>
+                  <%= t ".seat" %>
+                <% else %>
+                  <%= t ".quantity" %>
+                <% end %>
+              </strong>
+            </th>
+            <th></th>
+          </tr>
+          <tr>
+            <td width="20%">
+              <div class="form-group">
+                <%= f.input_field :booking_from, as: :date, html5: true,
+                  class: "form-control input-sm" %>
+              </div>
+            </td>
+            <td width="20%">
+              <div class="form-group">
+                <%= f.number_field :duration, min: Settings.min_duration,
+                  class: "form-control input-sm" %>
+              </div>
+            </td>
+            <td width="20%">
+              <div class="form-group">
+                <%= f.select :booking_type_id,
+                  options_from_collection_for_select(booking.space.booking_types, :id, :name),
+                  {}, class: "form-control input-sm" %>
+              </div>
+            </td>
+            <td width="15%">
+              <div class="form-group">
+                <%= f.number_field :quantity, min: Settings.min_quantity,
+                  class: "form-control input-sm" %>
+              </div>
+            </td>
+            <td width="15%">
+              <div class="form-group">
+                <%= f.submit t("book_now"), class: "btn btn-sm btn-primary" %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

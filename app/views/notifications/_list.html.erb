@@ -1,0 +1,13 @@
+<% @notifications.each do |notification| %>
+  <div class="notification-body">
+    <span role="presentation" class="">
+      <div class="row">
+        <div class="col-md-12 message-notification">
+          <span class="text-center" id="text-noti">
+            <%= link_to notification.load_message, load_link(notification.message) %>
+          </span>
+        </div>
+      </div>
+    </span>
+  </div>
+<% end %>

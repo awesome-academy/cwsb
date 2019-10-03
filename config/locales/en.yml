@@ -1,0 +1,416 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  in: "in"
+  check_all: "Check all"
+  working_times: "Working times"
+  new_venue: "Create Venue"
+  new_space: "Create space"
+  edit_space: "Edit space"
+  markers: "Markers"
+  venue_description: "venue description"
+  map: "Map"
+  venue_name: "venue name"
+  add_venue: "Add venue"
+  venue_address: "venue Address"
+  venue: "VENUE"
+  detail: "DETAIL"
+  vnd_slash: "VND/"
+  book_now: "Book now"
+  clickable_venue: "VENUE"
+  clickable_details: "DETAILS"
+  clickable_space_pricing: "SPACES AND PRICING"
+  clickable_admins: "ADMINS"
+  clickable_amenities: "AMENITIES"
+  clickable_marketplaces: "MARKETPLACE"
+  flash:
+    success_message: "successfully!"
+    danger_message: "error"
+    success_detail: "update venue detail successfully!"
+  from: "From"
+  to: "To"
+  booking_types:
+    DAY: "day"
+    WEEK: "week"
+    MONTH: "month"
+  date:
+    day_names: [SUN, MON, TUE, WED, THU, FRI, SAT]
+  layout:
+    your_booking: "Your booking"
+    store_booking: "Store booking"
+    base_title: "CWBS"
+    site_name: "CWBS"
+    account: "Account"
+    my_account: "My account"
+    message: "Message"
+    profile: "Profile"
+    setting: "Settings"
+    logout: "Logout"
+    created: "Created "
+    by_team: "by CWBS"
+    team_name: "CWBS"
+    company_name: "Framgia"
+    search_for_space: "Search for a space"
+    my_venues: "My venues"
+    my_spaces: "My co-working spaces"
+    booking_history: "Booking history"
+    how_it_work: "How it work?"
+    help: "Help"
+    about: "About"
+    users: "Users"
+    venues: "Venues"
+    booking: "Booking"
+    statistics: "Statistics"
+    framgia: "Framgia"
+    login: "Login"
+    signup: "Sign up"
+    cwsb: "Co-W-Space"
+    logout: "Logout"
+    your_space: "Your space"
+    your_cart: "Your cart"
+  home:
+    coworking_space: "Co-working space "
+    sharing: "Sharing"
+    search: "Search"
+    about_us: "About us"
+    company: "Company"
+    contact: "Contact"
+    support: "Support"
+    legal: "Legal"
+    licensing: "Licensing"
+    privacy_policy: "Privacy Policy"
+    follow_us: "Follow Us"
+    legal: "Legal"
+    hello: "Hello,"
+    link_footer: "Design by CWBS-Team."
+  static_pages:
+    index:
+      toggle_navigation: "Toggle navigation"
+      type: "Type"
+      somewhere: "somewhere"
+      site_des_line1: "Find your co-workingspace"
+      site_des_line2: "Explore over 5.000 spaces"
+      carousel1: "Find your co-working place is easier than ever"
+      carousel2: "We make it simple"
+      carousel3: "We have a team to support you 24/7"
+      carousel_line: "Book a coworking space, business center, or shared office
+        space nearby.Discover spaces to rent by the hour, day, or month."
+      quote1: "An awesome team that brought our ideas to life! Highly recommended!"
+      quote2: "I have never imagined that our final product would look that good!"
+      quote3: "An extraordinary service that helped us grow way too fast!"
+      quote4: "An awesome team that brought our ideas to life! Highly recommended!"
+      quote5: "I have never imagined that our final product would look that good!"
+      quote6: "An extraordinary service that helped us grow way too fast!"
+      name1: "Hoang Nhac Trung"
+      name2: "Nguyen Binh Dieu"
+      name3: "Nguyen Van Tran Anh"
+      name4: "Pham Van Chien"
+      name5: "Nguyen Hoang Anh Dung"
+      name6: "Ho Ngoc Doanh"
+      name7: "Le Xuan Giang"
+      name8: "Le Dinh Doan"
+      our_team: "Our Team"
+  users:
+    mailer:
+      confirm:
+        welcome: "Welcome"
+        remind: "You can confirm your account email through the link below:"
+        confirm_account: "Confirm my account"
+      password_change:
+        welcome: "Hello"
+        remind: "We're contacting you to notify you that your password has been changed."
+      reset_password:
+        welcome: "Hello"
+        remind1: "Someone has requested a link to change your password. You can do this through the link below."
+        remind2: "If you didn't request this, please ignore this email."
+        remind3: "Your password won't change until you access the link above and create a new one."
+        change_password: "Change my password"
+      unlock:
+        welcome: "Hello"
+        remind1: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        remind2: "Click the link below to unlock your account:"
+        my_account: "Unlock my account"
+    registrations:
+      new:
+        sign_up: "Sign up"
+        title: "Co-working space booking system"
+        remind: "Please Login or Register"
+        name: "Name"
+        email: "Email"
+        password: "Password (At least 8 characters)"
+        confirm_pass: "Verify password"
+        have_account: "Do you have an account?"
+        login: "Login"
+        remember_me: "Remember Me?"
+      edit:
+        title: "Your Profile"
+        title_info: "Customer Info"
+        basic: " Basic info"
+        username: "Username "
+        email: "Email "
+        password: "Password "
+        remind_password: "(leave blank if you don't want to change it)"
+        minimum: "characters minimum"
+        confirm_password: "Confirm Password "
+        current_password: "Current Password "
+        current_password_remind: "(we need your current password to confirm your changes)"
+        addition: " Additional info"
+        short_bio: "Short bio "
+        bio_place: "Tell us your story.."
+        best_skill: "Best skill "
+        skill_place: "Tell us your best skill"
+        phone_number: "Phone number "
+        phone_place: "Your phone number"
+        extra: " Extras"
+        facebook: "Facebook profile "
+        fb_place: "E.g. www.facebook.com/yourname"
+        google: "Google profile "
+        gg_place: "E.g. www.google.com/yourname"
+        twitter: "Twitter profile "
+        twit_place: "E.g. www.twitter.com/yourname"
+        change: "Save changed"
+    sessions:
+      new:
+        sign_in: "Log in"
+        remind: "Please Login or Register"
+        password: "Password"
+        forgot_password: "Forgot password?"
+        create_new_account: "Create a new account"
+        email: "Email"
+        password: "Password (At least 8 characters)"
+        remember_me: "Remember Me?"
+    passwords:
+      new:
+        email: "Your email"
+        reset_password: "Send me reset password instructions"
+        remind: "Did you remember your password?"
+        login: "Login"
+        forgot_pass: "Forgot password"
+      edit:
+        submit: "Change my password"
+        confirm: "Confirm new password"
+        new: "New password"
+        reset_password: "Reset password"
+        forgot_pass: "Forgot password"
+    confirmations:
+      new:
+        remind: "Resend confirmation instructions"
+  bookings:
+    email: "Change Status Your Space Booking"
+    status: "The Space Booking is "
+    new:
+      date: "Date"
+      duration: "Duration"
+      quantity: "Quantity"
+    create:
+      success: "Booking successfully!"
+    index:
+      your_bookings: "Your Bookings"
+      total_due: "TOTAL DUE"
+      request: "Request"
+      click_here: "Click here"
+      more_details: " to see more details!"
+      success: "Success!"
+      fail_create_request: "Have problem when send request to space owner. Please try again!"
+      request_all: "Request all"
+      x: "×"
+      title_toogle: "Delete invoice"
+  search:
+    place_holder: "Enter location"
+    spaces:
+      index:
+        maps: "Maps"
+        find_space: "Find space"
+        space_type: "Space type"
+        desk: "Desk"
+        private_office: "Prive office"
+        meeting_room: "Meeting room"
+        term: "Term"
+        space_type: "Space type"
+        all: "All space"
+      show:
+        contact: "Contact"
+        the_space: "The space"
+        the_venue: "The venue"
+        price: "Price"
+        amenities: "Amenities"
+        full_venue_profile: "Full venue profile"
+        open_hours: "Open hours"
+        booking: "Booking"
+        area: "Area: "
+        capicity: "Capicity: "
+        quantity: "Quantity: "
+  errors:
+    blank: "Your %{type} is empty"
+    spaces:
+      no_result: "No spaces found"
+  amenities:
+    errors:
+      load: "Don't have any amenity in store"
+    new:
+      block_title: "Create Venue"
+      title: "Add amenity"
+      service: "Service or amenity name"
+      place_wifi: "E.g. High speed WiFi"
+      description: "Description"
+      description_place: "E.g. Description for his amenity"
+      quantity: "Quantity available"
+      quantity_place: "E.g. 2"
+      is_free: "This amenity is free"
+      submit: "Save"
+      create_success: "Create amenity successfully"
+      create_fail: "Have some error when create amenity"
+      edit_success: "Edit amenity successfully"
+      cancel: "Cancel"
+      price: "Price (VND)"
+      price_plholder: "E.g. 120"
+      per: "Per"
+      quantity_plholder: "E.g. 2"
+    index:
+      block_title: "Create Venue"
+      th_amenity: "Amenity"
+      th_is_free: "Is Free"
+      th_edit_delete: "Edit / Delete"
+      th_service_charge: "Service charge"
+      th_description: "Description"
+      inner_left: "Add custom amenity"
+      inner_right: "Next"
+      free: "Free"
+      vnd_per: " VND per "
+      confirm: "Are you sure?"
+    form_outline:
+      clickable_venue: "VENUE"
+      clickable_details: "DETAILS"
+      clickable_space_pricing: "SPACES AND PRICING"
+      clickable_admins: "ADMINS"
+      clickable_amenities: "AMENITIES"
+      clickable_marketplaces: "MARKETPLACE"
+    edit:
+      price: "Price (VND)"
+      price_plholder: "E.g. 120"
+      per: "Per"
+      quantity_plholder: "E.g. 2"
+    form:
+      price: "Price (VND)"
+      price_plholder: "E.g. 120"
+      per: "Per"
+      quantity_plholder: "E.g. 2"
+    destroy:
+      delete_successfully: "Delete amenity successfully"
+      delete_error: "Delete amenity error"
+  venues:
+    not_found: "Vanues is not found !"
+    errors:
+      nil_venue: "Can't find this venue"
+      create_fail: "Have some problem when create amenity"
+      load_fail: "Don't have any venue in store"
+    index:
+      edit_venue: "Edit"
+      delete_venue: "Delete"
+      confirm_delete: "Are you sure?"
+  service_charges:
+    success:
+      create: "Create service charge successfully"
+      update: "Update service charge successfully"
+    errors:
+      create: "Have problem when create service charge"
+      update: "Have problem when update service charge"
+  time:
+    formats:
+      default: "%A, %d. %B %Y, %H:%M"
+      time_session: "%I:%M %p"
+  orders:
+    success:
+      create: "Create order successfully"
+    errors:
+      create: "Have problem when create orders charge"
+      load: "Can't find any order"
+  booking_histories:
+    index:
+      your_bookings: "Your booking history"
+      booking_histories: "Your booking history"
+      waitting: "Wait for confirm"
+      title_toogle: "Delete invoice"
+      request: "Requested"
+      accept: "Accepted"
+      reject: "Rejected"
+      payment: "Payment"
+      paid: "Paid"
+  spaces:
+    index:
+      edit: "Edit"
+      capicity: "Capicity: "
+      delete: "Delete"
+      confirm_delete: "Are you sure?"
+    create:
+      create_success: "Create space successfully"
+      create_fail: "Oop ! Create space fail !"
+    new:
+      per: "Per "
+      price: "Pricing information"
+      info: "Space infomation"
+    update:
+      update_success: "Update successfully !"
+      update_fail: "Oop ! update fails !"
+      payment: "Payment"
+  space:
+    create_success: "Create space successfully"
+    create_fail: "Oops ! Create space fail !"
+    capicity: "Capicity: "
+    content:
+    edit: "Edit"
+    delete: "Delete"
+    per: "Per "
+    price: "Pricing information"
+    info: "Space infomation"
+    confirm_delete: "Are you sure?"
+  store_bookings:
+    show:
+      title_toogle: "Delete bookings"
+      store_bookings: "Store bookings"
+      total_due: "Total: "
+      title: "Your booking history"
+  notification:
+    has: "has"
+    ago: "ago"
+    title_notification: "Notification"
+    status_message: "requested"
+  payments:
+    errors:
+      create: "Have problem when create payment"
+      load: "Can't find any payment"
+      update: "Update failed"
+    success:
+      update: "Update successfully"
+    show:
+      title: "Your receipt"
+      name: "Username"
+      price: "Total paid"
+      status: "Status"
+      transaction_id: "Transaction_id"
+      purchased_at: "Purchased at"
+      space: "Space"
+      quantity: "Quantity"
+      price: "Price"
+      total: "Total"
+      back: "Go back your booking histories"

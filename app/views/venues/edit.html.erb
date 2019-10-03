@@ -1,0 +1,52 @@
+<%= javascript_include_tag "map" %>
+<div class="row full-height margin-left-0 margin-right-0">
+  <div class="col-md-5 max-height-x padding-left-0 padding-right-0">
+    <div class="map-info full-height">
+      <div id="gmap_canvas" class="map-show full-height"></div>
+    </div>
+  </div>
+  <div class="col-md-7 max-height-x padding-left-0 padding-right-0 scroll-y">
+    <div class="block full">
+      <%= @venue.name %>
+    </div>
+    <div class="block full">
+      <div class="block-title">
+        <%= render "shared/form_outline", active_id: "venues" %>
+      </div>
+      <div class="row margin-left-0 margin-right-0">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="tab-content">
+            <div class="tab-pane active">
+              <%= simple_form_for @venue do |f| %>
+                <%= f.input :name, input_html: {class: "form-control margin-bot-15"} %>
+                <%= f.input :description,
+                  input_html: {class: "form-control margin-bot-15"} %>
+                <%= f.simple_fields_for :address do |form_address| %>
+                  <%= form_address.input :details,
+                    input_html: {class: "form-control margin-bot-15", id: "address"} %>
+                  <%= form_address.input :city,
+                    input_html: {class: "form-control margin-bot-15"} %>
+                  <%= form_address.input :postal_code,
+                    input_html: {class: "form-control margin-bot-15"} %>
+                  <%= form_address.input :street_address,
+                    input_html: {class: "form-control margin-bot-15"} %>
+                  <%= form_address.input :unit,
+                    input_html: {class: "form-control margin-bot-15"} %>
+                <% end %>
+                <%= f.input :phone_number,
+                  input_html: {class: "form-control margin-bot-15"} %>
+                <%= f.input :email,
+                  input_html: {class: "form-control margin-bot-15"} %>
+                <%= f.input :website,
+                  input_html: {class: "form-control margin-bot-15"} %>
+                <%= f.button :submit, class: "btn btn-primary pull-right" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhyJ3SWFP8U5Xmqe3H3X_iOsR1nw1v6_Q&&libraries=places"></script>

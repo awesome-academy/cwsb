@@ -1,0 +1,34 @@
+radius_search_in_miles: 5
+default_duration: 1
+default_quantity: 1
+min_duration: 1
+min_quantity: 1
+working_to: "8:00"
+working_from: "17:00"
+status_open: "open"
+status_close: "close"
+default_latitude: 0
+default_longitude: 0
+default_map_zoom: 16
+span_warning: "warning"
+span_success: "success"
+span_danger: "danger"
+reject_history: "Reject history"
+request_history: "Request history"
+accept_history: "Accept history"
+state_pending: 0
+requested: 1
+accepted: 2
+rejected: 3
+status_pending: 1
+status:
+  rejected: "reject"
+  accept: "accept"
+  request: "request"
+day_reject: 1
+default_price: 0
+mail_from: "anhdungtestframgia@gmail.com"
+mess_success: "success"
+mess_notice: "notice"
+paypal_default_upload: 1
+complete_payment_status: "Completed"

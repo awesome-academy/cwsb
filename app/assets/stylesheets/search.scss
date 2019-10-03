@@ -1,0 +1,229 @@
+// Place all the styles related to the Search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#map-container {
+  position: relative;
+}
+#map {
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 90%;
+  box-shadow: none;
+}
+
+#pac-input:focus {
+  border-color: #FFF;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+#target {
+  width: 345px;
+}
+.btn {
+  padding: 25px 35px;
+  border-radius: 0;
+  text-transform: none;
+  position: relative;
+  transition: all 0.5s ease 0s;
+}
+
+.btn:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.5s ease 0s;
+  width: 0;
+  height: 0;
+}
+
+.btn:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.5s ease 0s;
+  width: 0;
+  height: 0;
+}
+
+.green {
+  border: 1px solid #1bbae1;
+  color: #fff;
+}
+
+.green:hover:before,
+.green:hover:after,
+.green:hover .box:before,
+.green:hover .box:after {
+  background: #1bbae1;
+  width: 50%;
+  height: 50%;
+}
+
+.box:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  transition: all 0.5s ease 0s;
+  width: 0;
+  height: 0;
+}
+
+.box:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  transition: all 0.5s ease 0s;
+  width: 0;
+  height: 0;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+.green {
+  border: 1px solid #1bbae1;
+  color: black;
+}
+
+.green:hover:before,
+.green:hover:after,
+.green:hover .box:before,
+.green:hover .box:after{
+  background: #1bbae1;
+  width: 50%;
+  height: 50%;
+}
+@media (min-width: 1330px) {
+  #all, #office, #meeting, #desk {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 1329px) {
+  #all, #office, #meeting, #desk {
+    font-size: 10px !important;
+  }
+}
+
+#desk {
+  background-color: #1bbae1;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  &:focus {
+    background-color: #1bbae1;
+    border: 1px solid #107189;
+    font-weight: bold;
+  };
+}
+
+#meeting {
+  background-color: #1bbae1;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  &:focus {
+    background-color: #1bbae1;
+    border: 1px solid #107189;
+    font-weight: bold;
+  };
+}
+
+#office {
+  background-color: #1bbae1;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  &:focus {
+    background-color: #1bbae1;
+    border: 1px solid #107189;
+    font-weight: bold;
+  };
+}
+
+#all {
+  background-color: #1bbae1;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  &:focus {
+    background-color: #1bbae1;
+    border: 1px solid #107189;
+    font-weight: bold;
+  };
+}
+
+#label-space {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+
+#price {
+  display: none;
+}
+
+#show-space {
+  display: none;
+}
+
+.scroll-y {
+  overflow-y: scroll;
+}
+
+.fixed-top-last {
+  position: fixed;
+  z-index: 999;
+  top: 0px;
+  width: 42%;
+  padding-bottom: 10px;
+}

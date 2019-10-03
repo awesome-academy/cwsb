@@ -1,0 +1,25 @@
+<%= form_for [@venue, amenity, argument] do |f| %>
+  <div class="modal-body">
+    <div class="form-group">
+      <%= f.label t(".price"), class: "control-label" %>
+      <%= f.text_field :price, class: "form-control",
+        placeholder: t(".price_plholder") %>
+    </div>
+    <div class="form-group">
+      <%= f.label t(".per"), class: "control-label" %>
+      <div class="input-group">
+        <%= f.text_field :quantity, class: "form-control",
+          placeholder: t(".quantity_plholder") %>
+        <div class="input-group-btn">
+          <%= f.collection_select :price_type_id, @price_types,
+            :id, :content, {},
+            {class: "btn btn-primary dropdown-toggle"} %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit t("amenities.new.submit"),
+      class: "btn btn-sm btn-primary" %>
+  </div>
+<% end %>

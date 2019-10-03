@@ -1,0 +1,42 @@
+.amenities{
+  width: 97% !important;
+  margin: 20px auto;
+}
+th.last{
+  width: 150px;
+}
+th{
+  padding: 20px !important;
+}
+.create_amenity{
+  border-radius: 5px;
+  font-weight: 600;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.1;
+  width: 180px;
+  height: 50px;
+  font-size: 14px;
+  transition: background-color .3s ease;
+  padding: .8125rem 1.25rem .875rem;
+  border: 1px solid #44a5d1;
+  background-color: transparent;
+  color: #44a5d1;
+}
+.inner{
+  display: inline-block;
+  position: relative;
+  padding-bottom: 20px;
+}
+.left_amenity {
+  left: 25px;
+}
+.right_amenity {
+  float: right;
+  right: 22px;
+}
+h1.amenity-name, h2.amenity-name {
+  color: #00464f !important;
+}
+.margin-bottom-0 {
+  margin-bottom: 0px !important;
+}
